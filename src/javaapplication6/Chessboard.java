@@ -22,18 +22,17 @@ public class Chessboard extends JPanel {
         AffineTransform drawTransform = new AffineTransform();
         drawTransform.translate(ZEROX, ZEROY);
         drawTransform.scale(Piece.TILESIZE, Piece.TILESIZE);
-        board.put(new Point(0, 2), new TransformDec(new Piece(11, 0, 2), drawTransform));
-        board.put(new Point(0, 6), new TransformDec(new Piece(0, 0, 6), drawTransform));
-        board.put(new Point(1, 4), new TransformDec(new Piece(6, 1, 4), drawTransform));
-        board.put(new Point(1, 5), new TransformDec(new Piece(5, 1, 5), drawTransform));
-        board.put(new Point(3, 7), new TransformDec(new Piece(1, 3, 7), drawTransform));
-        board.put(new Point(4, 3), new TransformDec(new Piece(6, 4, 3), drawTransform));
-        board.put(new Point(4, 4), new TransformDec(new Piece(7, 4, 4), drawTransform));
-        board.put(new Point(5, 4), new TransformDec(new Piece(6, 5, 4), drawTransform));
-        board.put(new Point(5, 6), new TransformDec(new Piece(0, 5, 6), drawTransform));
-        board.put(new Point(6, 5), new TransformDec(new Piece(0, 6, 5), drawTransform));
-        board.put(new Point(7, 4), new TransformDec(new Piece(0, 7, 4), drawTransform));
-
+        board.put(new Point(0, 2), new TransformDec(Piece.getPiece(11), drawTransform));
+        board.put(new Point(0, 6), new TransformDec(Piece.getPiece(0), drawTransform));
+        board.put(new Point(1, 4), new TransformDec(Piece.getPiece(6), drawTransform));
+        board.put(new Point(1, 5), new TransformDec(Piece.getPiece(5), drawTransform));
+        board.put(new Point(3, 7), new TransformDec(Piece.getPiece(1), drawTransform));
+        board.put(new Point(4, 3), new TransformDec(Piece.getPiece(6), drawTransform));
+        board.put(new Point(4, 4), new TransformDec(Piece.getPiece(7), drawTransform));
+        board.put(new Point(5, 4), new TransformDec(Piece.getPiece(6), drawTransform));
+        board.put(new Point(5, 6), new TransformDec(Piece.getPiece(0), drawTransform));
+        board.put(new Point(6, 5), new TransformDec(Piece.getPiece(0), drawTransform));
+        board.put(new Point(7, 4), new TransformDec(Piece.getPiece(0), drawTransform));
         image = new ImageIcon("board3.png").getImage();
         setPreferredSize(new Dimension(image.getWidth(null), image.getHeight(null)));
         AffineTransform dragTransform = new AffineTransform();
@@ -66,10 +65,10 @@ public class Chessboard extends JPanel {
         for (Map.Entry<Point, IPiece> e : board.entrySet()) {
             Point pt = e.getKey();
             IPiece pc = e.getValue();
-            pc.draw((Graphics2D) g);
+            pc.draw((Graphics2D) g, pt.x, pt.y);
         }
         if (mouse != null && dragged != null) {
-            dragged.draw((Graphics2D) g);
+            dragged.draw((Graphics2D) g, dragged.getX(), dragged.getY());
         }
     }
 

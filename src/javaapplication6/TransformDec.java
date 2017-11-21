@@ -22,10 +22,10 @@ class TransformDec extends Decorator {
     }
     
     @Override
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, int x, int y) {
         AffineTransform oldTransform = g.getTransform();
         g.transform(transform);
-        this.piece.draw(g);
+        this.piece.draw(g, x, y);
         g.setTransform(oldTransform);
     }
 }

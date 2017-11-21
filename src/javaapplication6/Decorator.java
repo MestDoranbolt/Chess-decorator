@@ -20,8 +20,8 @@ public abstract class Decorator implements IPiece {
     }
 
     @Override
-    public void draw(Graphics2D g) {
-        this.piece.draw(g);
+    public void draw(Graphics2D g, int x, int y) {
+        this.piece.draw(g, x, y);
     }
 
     @Override
